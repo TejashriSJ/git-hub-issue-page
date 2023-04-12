@@ -1,0 +1,32 @@
+.Issue-details {
+  display: flex;
+  flex-direction: column;
+  margin: 0rem 1rem;
+  padding: 0rem 1rem;
+  box-sizing: border-box;
+  border: 1px solid gray;
+}
+.title-line {
+  display: flex;
+  align-items: center;
+}
+.title {
+  font-weight: bold;
+  align-self: flex-start;
+  padding-left: 1rem;
+}
+.issue-details-line {
+  color: gray;
+  font-size: small;
+  margin-top: 0rem;
+}
+.comment {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-end;
+  flex-grow: 1;
+  padding-right: 1rem;
+  justify-content: flex-end;
+  cursor: pointer;
+}
