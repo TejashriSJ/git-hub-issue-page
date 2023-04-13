@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import "./issue.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { faMessage } from "@fortawesome/free-solid-svg-icons";
+import "./issue.css";
 
 class Issue extends Component {
   commentsStyle = () => {
     if (this.props.issue.comments > 0) {
-      console.log("Comments found");
       return { display: "flex" };
     } else {
       return { display: "none" };
