@@ -1,26 +1,17 @@
 import React, { Component } from "react";
 import Issue from "./Issue";
 
-
 class Issues extends Component {
-  state = { Issues: [] };
-  componentDidMount() {
-    fetch("https://api.github.com/repos/rails/rails/issues")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        this.setState({ Issues: data });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   render() {
-    return this.state.Issues.map((issue) => {
-      return <Issue key={Issue.id} issue={issue} />;
-    });
+    if (this.props.isLoading) {
+      return <h1>Loading ...</h1>;
+    } else if (this.props.isError) {
+      return <h1>Error in fetching the data</h1>;
+    } else {
+      return this.props.issues.map((issue) => {
+        return <Issue key={issue.id} issue={issue} />;
+      });
+    }
   }
 }
 export default Issues;
