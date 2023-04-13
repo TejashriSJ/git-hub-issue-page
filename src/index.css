@@ -22,6 +22,11 @@ code {
   color: gray;
   cursor: pointer;
   border-top-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
   margin-top: 1rem;
+}
+.header-heading {
+  text-align: center;
+  color: gray;
+  text-shadow: 1rem 0rem 1rem;
 }
