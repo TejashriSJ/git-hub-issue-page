@@ -1,4 +1,3 @@
-import { faDisplay } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 
 class Header extends Component {
