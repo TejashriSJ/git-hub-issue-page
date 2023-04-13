@@ -30,3 +30,18 @@ code {
   color: gray;
   text-shadow: 1rem 0rem 1rem;
 }
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+.nav-buttons button {
+  padding: 0.5rem;
+  background-color: gray;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width: 5rem;
+}
