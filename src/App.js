@@ -2,24 +2,32 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Issues from "./Components/Issues";
 import Header from "./Components/Header";
+import NavButtons from "./Components/NavButtons";
 
 import "./App.css";
 
 class App extends Component {
-  state = { Issues: [], isLoading: true, isError: false };
-  componentDidMount() {
-    fetch("https://api.github.com/repos/rails/rails/issues")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        this.setState({ Issues: data, isLoading: false });
-      })
-      .catch((err) => {
-        this.setState({ isLoading: false, isError: true });
-        console.log(err);
-      });
-  }
+  state = { pageNumber: 1, isLowerLimit: false, isUpperLimit: false };
+
+  onClickNext = (event) => {
+    if (this.state.pageNumber > 26) {
+      this.setState({ isUpperLimit: true });
+    } else {
+      console.log("next");
+      this.setState({ pageNumber: this.state.pageNumber + 1 });
+    }
+    this.setState({ isLowerLimit: false });
+  };
+  onClickPrevious = (event) => {
+    if (this.state.pageNumber > 1) {
+      this.setState({ pageNumber: this.state.pageNumber - 1 });
+    } else {
+      this.setState({ isLowerLimit: true });
+    }
+    this.setState({
+      isUpperLimit: false,
+    });
+  };
   render() {
     return (
       <Router>
@@ -27,15 +35,16 @@ class App extends Component {
         <Routes>
           <Route
             path="/"
-            element={
-              <Issues
-                issues={this.state.Issues}
-                isLoading={this.state.isLoading}
-                isError={this.state.isError}
-              />
-            }
+            element={<Issues pageNumber={this.state.pageNumber} />}
           />
         </Routes>
+        <NavButtons
+          onClickNext={this.onClickNext}
+          onClickPrevious={this.onClickPrevious}
+          isLowerLimit={this.state.isLowerLimit}
+          isUpperLimit={this.state.isUpperLimit}
+          pageNumber={this.state.pageNumber}
+        />
       </Router>
     );
   }
