@@ -4,7 +4,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <h1 className="header-heading">Git Hub Errors Page</h1>
+        <h1 className="header-heading">Git Hub Issues Page</h1>
         <nav>
           <ul className="issue-header">
             <li>Author</li>
